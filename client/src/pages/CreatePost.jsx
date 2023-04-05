@@ -14,42 +14,7 @@ const CreatePost = () => {
   const [generateImg, setGenerateImg] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (form.photo && form.prompt) {
-      setLoading(true);
-
-      try {
-        const response = await fetch('http://localhost:5000/api/v1/post', { 
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(form),
-        })
-         
-        await response.json()
-        navigate('/')
-      } catch (error) {
-        alert(error)
-      } finally {
-        setLoading(false)
-      }
-    } else {
-      alert('Please enter a prompt to continue')
-    }
-  };
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSurpriseMe = () => {
-    const randomPrompt = getRandomPrompt(form.prompt);
-    setForm({ ...form, prompt: randomPrompt });
-  };
-
+  
   const generateImage = async () => {
     if (form.prompt) {
       try {
@@ -74,6 +39,43 @@ const CreatePost = () => {
       alert("Please enter a prompt");
     }
   }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (form.photo && form.prompt) {
+      setLoading(true);
+
+      try {
+        const response = await fetch("http://localhost:5000/api/v1/post", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        });
+
+        await response.json();
+        navigate("/");
+      } catch (error) {
+        alert(error);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      alert("Please enter a prompt to continue");
+    }
+  };
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSurpriseMe = () => {
+    const randomPrompt = getRandomPrompt(form.prompt);
+    setForm({ ...form, prompt: randomPrompt });
+  };
+
     return (
       <section className="max-w-7x1 mx-auto">
         <div>
