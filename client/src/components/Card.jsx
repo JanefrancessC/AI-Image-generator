@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
+import { download } from "../assets";
+import { downloadImage } from "../utils";
 
-const Card = () => {
-  return (
-    <div>
-      Card
-    </div>
-  )
-}
+const Card = ({ _id, name, prompt, photo}) => {
+  return (<div className="rounded-x1 group relative shadow-card hover:shadow-cardhover card">
 
-export default Card
+  </div>)
+};
+
+export default Card;
