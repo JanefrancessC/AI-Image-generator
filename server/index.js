@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import * as dotenv from "dotenv";
+import connectDB from "./mongodb/connect.js";
 
 dotenv.config();
 const PORT = process.env.PORT || 5000;
@@ -12,10 +13,15 @@ app.get("/", async (req, res) => {
   res.send("Welcome to AI image generator!");
 });
 
-// const startServer = async (req, res) => {
-//   app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
-// };
+const startServer = async (req, res) => {
+  try {
+    connectDB(process.env.MONGODB_URL);
+    app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
+  } catch (error) {
+    console.error(error)
+  }
+};
 
-// startServer();
+startServer();
 
-app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
+// app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
