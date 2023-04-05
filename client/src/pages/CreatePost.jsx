@@ -114,7 +114,7 @@ const CreatePost = () => {
               ) : (
                 <img
                   src={preview}
-                  alt={preview}
+                  alt='preview'
                   className="w-9/12 h-9/12 object-contain opacity-40"
                 />
               )}
@@ -140,7 +140,10 @@ const CreatePost = () => {
             <p className="mt-2 text-[#666e75] text-[14px]">
               Share your AI image with the community
             </p>
-            <button className="mt-3 text-white bg-[#6469ff] " type="submit">
+            <button
+              className="mt-3 text-white bg-[#6469ff] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+              type="submit"
+            >
               {loading ? "Sharing..." : "Share with community"}
             </button>
           </div>
