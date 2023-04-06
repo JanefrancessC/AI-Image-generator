@@ -18,10 +18,10 @@ app.use("/api/v1/dalle", dalleRoutes);
 
 
 app.get("/", async (req, res) => {
-  res.send("Welcome to AI image generator!");
+  res.json({ message: "Welcome to AI image generator!" });
 });
 
-const startServer = async (req, res) => {
+const startServer = async () => {
   try {
     connectDB(process.env.MONGODB_URL);
     app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));

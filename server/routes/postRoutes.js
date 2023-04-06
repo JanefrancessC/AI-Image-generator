@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
     res.status(200).json({ success: true, data: posts })
   } catch (error) {
     console.error(error)
-    res.status(200).json({ success: true, data: posts });
+    res.status(500).json({ success: false, message: "fetching posts failed" });
   }
 });
 
